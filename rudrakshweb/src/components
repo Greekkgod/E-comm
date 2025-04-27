@@ -1,0 +1,12 @@
+// filepath: d:\smart-1\Rudraksh-main\src\components\index.tsx
+import React from 'react';
+
+const ExampleComponent = () => {
+    return (
+        <div>
+            <h1>Welcome to the Rudraksh Web Application</h1>
+        </div>
+    );
+};
+
+export default ExampleComponent;
