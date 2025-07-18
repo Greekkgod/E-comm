@@ -17,8 +17,8 @@ type IconWithUrl = {
 
 const NavIcon = ({ Icon, url }: IconWithUrl) => {
   return (
-    <Link href={url} className="px-2 py-2 inline-flex align-baseline hover:bg-[#ede9e0] rounded cursor-pointer">
-      <Icon size={28} strokeWidth={1} color="#0A0A0A" />
+    <Link href={url} className="px-2 py-2 inline-flex align-baseline hover:bg-teal-500 rounded cursor-pointer">
+      <Icon size={28} strokeWidth={1} color="white" />
     </Link>
   )
 }
@@ -69,7 +69,7 @@ const Navbar = () => {
 
       {/* Top Section (Hides on scroll down, reappears on scroll up) */}
       <nav
-        className={`w-full fixed top-0 left-0 z-50 bg-white ${
+        className={`w-full fixed top-0 left-0 z-50 bg-gradient-to-r from-teal-400 to-teal-700  ${
           isScrollingDown ? "-translate-y-full" : "translate-y-0"
         }`}
         style={{ height: "60px" }} // Adjust based on your design
@@ -77,24 +77,26 @@ const Navbar = () => {
         <div className="flex-between h-full shadow-lg md:shadow-none">
           <div className="md:px-8 py-3 inline-flex align-baseline gap-6">
             <button onClick={toggleDrawer} className="hidden md:block focus:outline-none" aria-label="Toggle menu">
-              <AlignJustify size={40} strokeWidth={1.2} color="#1f2937" />
+              <AlignJustify size={40} strokeWidth={1.2} color="white" />
             </button>
             <Link href="/">
+         
               <Image
-                src="/images/logos/Logo.svg"
+                src="/images/logos/Logo.jpg"
                 alt="Rishi Rudraksha"
-                width={140}
+                width={40}
                 height={40}
                 className="h-10 w-auto px-10"
               />
+            
             </Link>
           </div>
           <div className="hidden md:inline-flex px-8 py-3 flex-center gap-6">
-            <Input searchVal={searchVal} setSearchVal={setSearchVal} className="mr-2" />
+            <Input searchVal={searchVal} setSearchVal={setSearchVal} className="display-flex justify-start rounded-full border border-gray-300 px-0 py-0 w-full focus:outline-none focus:ring-2 " />
             {TopNavIcon.map((icon, index) => (
               index === 2 ? 
-              (<button key={index} onClick={handleRedirect} className="px-2 py-2 inline-flex align-baseline hover:bg-[#ede9e0] rounded cursor-pointer">
-              <icon.Icon size={28} strokeWidth={1} color="#0A0A0A" />
+              (<button key={index} onClick={handleRedirect} className="px-2 py-2 inline-flex align-baseline hover:bg-teal-500 rounded cursor-pointer">
+              <icon.Icon size={28} strokeWidth={1} color="white" />
             </button>)
               : 
               (<NavIcon key={index} Icon={icon.Icon} url={icon.url} />)

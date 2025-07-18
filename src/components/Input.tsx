@@ -22,8 +22,8 @@ const Input = ({
       {/* Input Field */}
       <input
         type="text"
-        placeholder="Search for the products"
-        className="w-full px-4 py-2 pr-10 text-gray-600 placeholder-gray-500 border border-gray-600 outline-none focus:ring-0 focus:border-gray-600 rounded"
+        placeholder="Search for the products      "
+        className="justify-center rounded-full border border-gray-300 px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-teal-500"
         value={searchVal}
         onChange={(e) => setSearchVal(e.target.value)}
       />

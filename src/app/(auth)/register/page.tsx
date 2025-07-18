@@ -50,7 +50,7 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         });
         alert("Registered Successfully");
-        router.push("/");
+        router.push("/login");
       } catch (error) {
         console.log(error);
         if (axios.isAxiosError(error) && error.response) {

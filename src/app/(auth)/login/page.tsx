@@ -51,7 +51,7 @@ const Login = () => {
           await axios.post("http://localhost:3000/api/auth/login" , values)
           console.log(values)
           alert("Registered Successfully")
-          router.push("/")
+          router.push("/cart")
 
 
         } catch (error: unknown) {
