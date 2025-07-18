@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { use, useEffect, useState } from "react";
+import { Router } from "react-router-dom";
+import { useParams ,useRouter} from "next/navigation";
 import Image from "next/image";
 import axios, { AxiosError } from "axios";
 import { Star, X, ChevronLeft, ChevronRight, Minus, Plus, Truck, Clock, Shield, Flag, Leaf } from 'lucide-react';
@@ -104,10 +105,17 @@ const ProductDetailPage: React.FC = () => {
     // This would typically check delivery availability for the pin code
     alert(`Checking delivery availability for pin code: ${pinCode}`);
   };
-
+const router = useRouter();
   const handleAdd = () => {
-    if(!product) return;
-    handleAddToCart(product?.id, quantity);
+    if(product){
+
+      router.push(`/register`)
+
+    }
+    else{
+
+      handleAddToCart(product?.id, quantity);
+    }
   };
 
   const handleAddToWishlist = () => {

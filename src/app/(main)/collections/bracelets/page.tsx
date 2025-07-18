@@ -13,7 +13,7 @@ const Page: React.FC = () => {
         const response = await axios.get<Product[]>("http://localhost:3000/api/products/getall");
         
         // Filter products by "Bracelets" category
-        const filteredProducts = response.data.filter(product => product.category.includes("drinks"));
+        const filteredProducts = response.data.filter(product => product.category.includes("dinks"));
         setProducts(response.data);
         setFilteredProducts(filteredProducts);
         console.log(`Number of products in category "Bracelets": ${filteredProducts.length}`);

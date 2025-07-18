@@ -14,30 +14,26 @@ type DrawerProps = {
 // Replace the categories array with this one that uses placeholder images
 const categories = [
   {
-    title: "Rudraksha",
-    icon: "/images/Collections/Rudraksha/categoriesRudraksha.jpg",
+    title: "Home",
+    icon: "/images/logos/logo.jpg",
     url: "/images/Collections/Rudraksha/categoriesRudraksha.jpg",
   },
   {
-    title: "Temple & Consecrated",
-    icon: "/images/Collections/Rudraksha/temples.jpg",
+    title: "Contanct Us",
+    icon: "/images/logos/phone-solid.png",
     url: "/category/temple",
   },
   {
-    title: "Yoga Store",
-    icon: "/images/Collections/Rudraksha/yoga.jpg",
+    title: "Your Order",
+    icon: "/images/logos/logo.jpg",
     url: "/category/yoga",
   },
   {
-    title: "Mala",
+    title: "Profile",
     icon: "/images/Collections/Rudraksha/mala.jpg",
     url: "/category/food",
   },
-  {
-    title: "Bracelets",
-    icon: "/images/Collections/Rudraksha/bracelets.jpg",
-    url: "/category/food",
-  },
+  
 
 ]
 

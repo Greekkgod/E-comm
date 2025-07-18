@@ -29,21 +29,25 @@ export const ButtonNavLinks : BottomNavLinks[] = [
         url: '/'
     },
     {
-        title: 'Rudraksha Consultation',
-        url: '/'
+        title: 'Grocery',
+        url: '/collections/mukhi-combination'
     },
     {
-        title: 'About Us',
-        url: '/'
-    },
-    {
+        title: 'Vegetables',
+        url: '/collections/stone-crystal-mala'
+      },   
+      {
         title: 'Seasonals',
         url: '/'
+      },
+    {
+      title:"Contact Us",
+      url:"/"
     },
     {
-        title : 'More',
-        url : '/'
-    }
+        title: 'More',
+        url: '/'
+    },
 ]
 
 export const slides : Slides[] = [
@@ -91,7 +95,7 @@ export const collections : CollectionItems[] = [
     },
     {
       id: 3,
-      title: 'Bracelets',
+      title: 'Drinks',
       image: '/images/listings/cold_drinks.jpg',
       href: '/collections/bracelets'
   },
