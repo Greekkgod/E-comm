@@ -16,22 +16,22 @@ const categories = [
   {
     title: "Home",
     icon: "/images/logos/logo.jpg",
-    url: "/images/Collections/Rudraksha/categoriesRudraksha.jpg",
+    url: "/",
   },
   {
     title: "Contanct Us",
-    icon: "/images/logos/phone-solid.png",
-    url: "/category/temple",
+    icon: "/images/logos/contact.png",
+    url: "/contact",
   },
   {
     title: "Your Order",
-    icon: "/images/logos/logo.jpg",
-    url: "/category/yoga",
+    icon: "/images/logos/cart.png",
+    url: "/cart",
   },
   {
     title: "Profile",
-    icon: "/images/Collections/Rudraksha/mala.jpg",
-    url: "/category/food",
+    icon: "/images/logos/profile.png",
+    url: "/profile",
   },
   
 
