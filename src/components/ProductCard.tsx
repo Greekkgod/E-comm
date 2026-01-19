@@ -1,24 +1,3 @@
-"use client";
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { Heart } from 'lucide-react';
-import useCurrencyStore from '@/store/currencyStore';
-import CurrencyConverter from "currency-converter-lt";
-
-interface ProductCardProps {
-  id: number;
-  name: string;
-  description?: string;
-  originalPrice: number;
-  currentPrice: number;
-  discountPercentage?: number;
-  rating: number;
-  image: string;
-  isFavorite?: boolean;
-  onFavoriteToggle?: (id: number) => void;
-  onAddToCart?: (id: number) => void;
-}
-
 const UpvannProductCard: React.FC<ProductCardProps> = ({
   id,
   name,

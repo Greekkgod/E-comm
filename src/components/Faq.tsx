@@ -1,4 +1,3 @@
-
 import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
@@ -23,7 +22,6 @@ export default function FAQ() {
             Quick Answers to Some Frequently Asked Questions
           </h2>
           <Accordion type="single" collapsible className="w-full">
-
             <AccordionItem value="item-8">
               <AccordionTrigger className="text-lg">Do you offer fresh vegetables and fruits daily?</AccordionTrigger>
               <AccordionContent className="text-base">
