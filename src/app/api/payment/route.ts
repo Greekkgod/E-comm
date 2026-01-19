@@ -116,4 +116,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Payment initiation failed" }, { status: 500 });
   }
 }
-
