@@ -22,31 +22,31 @@ export const ButtonNavLinks : BottomNavLinks[] = [
     },
     {
         title: 'Exclusive',
-        url: '/'
+        url: '/collections/exclusive'
     },
     {
         title: 'Drinks',
-        url: '/'
+        url: '/collections/drinks'
     },
     {
         title: 'Grocery',
-        url: '/collections/mukhi-combination'
+        url: '/collections/grocery'
     },
     {
         title: 'Vegetables',
-        url: '/collections/stone-crystal-mala'
+        url: '/collections/vegetables'
       },   
       {
         title: 'Seasonals',
-        url: '/'
+        url: '/collections/seasonal'
       },
     {
       title:"Contact Us",
-      url:"/"
+      url:"/contact"
     },
     {
         title: 'More',
-        url: '/'
+        url: '/collections/all'
     },
 ]
 
@@ -78,7 +78,7 @@ export const collections : CollectionItems[] = [
       id: 1,
       title: 'Milk Products',
       image: '/images/listings/milk_products.jpg',
-      href: '/collections/stone-crystal-mala'
+      href: '/collections/milk-products'
     },
     {
       id: 2,
@@ -91,13 +91,13 @@ export const collections : CollectionItems[] = [
       id: 4,
       title: 'Grocery',
       image: '/images/listings/grocery.jpg',
-      href: '/collections/mukhi-combination'
+      href: '/collections/grocery'
     },
     {
       id: 3,
       title: 'Drinks',
       image: '/images/listings/cold_drinks.jpg',
-      href: '/collections/bracelets'
+      href: '/collections/drinks'
   },
 ]; 
 
@@ -203,7 +203,6 @@ export const upvannItems: ProductShow[] = [
     price: 54.00,
     image: "/images/Collections/Upvann/pumpkin.jpg"
   },
-  // You can add Mukhi 11 to 21 similarly with their descriptions.
 ];
 
 export const testimonials: Testimonial[] = [

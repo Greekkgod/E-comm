@@ -12,8 +12,6 @@ import ProductCard from "@/components/ListingCard"
 type Filters = {
   category: string[]
   priceRange: [number, number] | null
-  mukhi: string[]
-  isConsecrated: boolean | null
 }
 
 // Sort options
@@ -28,8 +26,6 @@ export default function ProductListing({products} :
   const [filters, setFilters] = useState<Filters>({
     category: [],
     priceRange: null,
-    mukhi: [],
-    isConsecrated: null,
   })
   const [sortBy, setSortBy] = useState<SortOption>("name-desc")
   const [gridView, setGridView] = useState<boolean>(true)
@@ -41,23 +37,18 @@ export default function ProductListing({products} :
 
     // Apply category filter
     if (filters.category.length > 0) {
-    result = result.filter((product: Product) => product.category.some((cat: string) => filters.category.includes(cat)))
+      result = result.filter((product: Product) => 
+        // Handle both string[] and string categories
+        Array.isArray(product.category) 
+          ? product.category.some((cat: string) => filters.category.some(filterCat => cat.toLowerCase().includes(filterCat.toLowerCase())))
+          : filters.category.some(filterCat => (product.category as string).toLowerCase().includes(filterCat.toLowerCase()))
+      )
     }
 
     // Apply price range filter
     if (filters.priceRange) {
       const [min, max] = filters.priceRange
       result = result.filter((product) => product.price >= min && product.price <= max)
-    }
-
-    // Apply mukhi filter (assuming mukhi is in the name)
-    if (filters.mukhi.length > 0) {
-      result = result.filter((product) => filters.mukhi.some((mukhi) => product.name.includes(`${mukhi} Mukhi`)))
-    }
-
-    // Apply consecrated filter
-    if (filters.isConsecrated !== null) {
-      result = result.filter((product) => product.isConsecrated === filters.isConsecrated)
     }
 
     // Apply sorting
@@ -167,4 +158,3 @@ export default function ProductListing({products} :
     </div>
   )
 }
-
