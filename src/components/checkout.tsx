@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sh
 import { ShippingForm } from "./shipping-form"
 import { formatCurrency } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import { cashfree } from "@/utils/cash"
+import { getCashfreeInstance } from "@/utils/cash"
 import { toast } from "sonner"
 
 type cart = CartResponse["cart"];
@@ -24,8 +24,6 @@ interface DecodedToken {
   id: string
   [key: string]: unknown
 }
-
-
 
 export function CheckoutDrawer({ cart, isOpen, onClose }: CheckoutDrawerProps) {
   const [isLoading, setIsLoading] = useState(false)
@@ -53,7 +51,8 @@ export function CheckoutDrawer({ cart, isOpen, onClose }: CheckoutDrawerProps) {
     }
   }
 
-  const handleRedirect = (sessionId: string) => {
+  const handleRedirect = async (sessionId: string) => { // Made async
+    const cashfree = await getCashfreeInstance(); // Await the instance
     const checkoutOptions = {
       paymentSessionId: sessionId,
       returnUrl: `${window.location.origin}/checkout/success`,

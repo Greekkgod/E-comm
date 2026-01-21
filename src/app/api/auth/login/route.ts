@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 export async function POST(req : Request) {
   try {
@@ -21,11 +19,17 @@ export async function POST(req : Request) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
     }
 
+    // Dynamically import bcrypt
+    const bcrypt = (await import("bcrypt")).default;
+    
     // Compare password with the hashed password in the database
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
     }
+
+    // Dynamically import jsonwebtoken
+    const jwt = (await import("jsonwebtoken")).default;
 
     // Generate a JWT token
     const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET!, {

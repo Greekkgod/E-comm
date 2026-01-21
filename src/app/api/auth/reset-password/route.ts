@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
@@ -22,6 +21,9 @@ export async function POST(req: Request) {
     if (!user) {
       return NextResponse.json({ error: "Invalid or expired token" }, { status: 400 });
     }
+
+    // Dynamically import bcrypt
+    const bcrypt = (await import("bcrypt")).default;
 
     // Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
