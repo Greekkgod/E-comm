@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { cashfree } from "@/utils/cash";
+import { getCashfreeInstance } from "@/utils/cash";
 
 function Checkout() {
   const [customerInfo, setCustomerInfo] = useState({
@@ -20,7 +20,8 @@ function Checkout() {
     }));
   };
 
-  const handleRedirect = (sessionId : string) => {
+  const handleRedirect = async (sessionId : string) => { // Made async
+      const cashfree = await getCashfreeInstance(); // Await the instance
       const checkoutOptions = {
         paymentSessionId: sessionId,
         returnUrl:

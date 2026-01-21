@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 export async function POST(req: Request) {
   try {
@@ -16,6 +14,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Email already in use" }, { status: 400 });
     }
 
+    // Dynamically import bcrypt
+    const bcrypt = (await import("bcrypt")).default;
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const [user, userDetails] = await prisma.$transaction([
@@ -40,6 +40,8 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
     }
 
+    // Dynamically import jsonwebtoken
+    const jwt = (await import("jsonwebtoken")).default;
     const token = jwt.sign({ id:userDetails.id, email: userDetails.email }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
     const response = NextResponse.json(
