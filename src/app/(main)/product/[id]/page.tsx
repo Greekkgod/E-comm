@@ -11,9 +11,17 @@ import { Separator } from "@/components/ui/separator";
 import { handleAddToCart } from "@/utils/api";
 import Cookie from "js-cookie";
 import useCurrencyStore from "@/store/currencyStore";
-import ProductReviews from "@/components/ProductReviews";
+import dynamic from "next/dynamic";
 import { useProductStore } from "@/store/productStore";
-import UpvannShowCase from "@/components/UpvannShowCase";
+
+
+const ProductReviews = dynamic(() => import("@/components/ProductReviews"), {
+  loading: () => <p>Loading reviews...</p>,
+});
+
+const UpvannShowCase = dynamic(() => import("@/components/UpvannShowCase"), {
+  loading: () => <p>Loading...</p>,
+});
 
 const API_KEY = "273098da3cf25e72a17434ae";
 

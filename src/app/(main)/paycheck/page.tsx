@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import { getCashfreeInstance } from "@/utils/cash";
 
 function Checkout() {
   const [customerInfo, setCustomerInfo] = useState({
@@ -19,23 +18,6 @@ function Checkout() {
       [name]: value,
     }));
   };
-
-  const handleRedirect = async (sessionId : string) => { // Made async
-      const cashfree = await getCashfreeInstance(); // Await the instance
-      const checkoutOptions = {
-        paymentSessionId: sessionId,
-        returnUrl:
-          "http://localhost:3000/checkout/success",
-      };
-      cashfree.checkout(checkoutOptions).then(function (result) {
-        if (result.error) {
-          alert(result.error.message);
-        }
-        if (result.redirect) {
-          console.log("Redirection");
-        }
-      });
-  }
 
   const handleCheckout = async () => {
     const { customer_name, customer_email, customer_phone, amount } = customerInfo;
@@ -71,12 +53,10 @@ function Checkout() {
 
       const data = await response.json();
       
-      if (!response.ok) throw new Error(data.message || "Payment failed");
-
-      if (data.payment_session_id) {
-        handleRedirect(data.payment_session_id);
+      if (!response.ok) {
+        throw new Error(data.error || "Payment failed");
       } else {
-        throw new Error("Missing payment session ID");
+        setError(data.message || "Cashfree is not configured. Payment initiation skipped.");
       }
     } catch (error) {
       console.error("Payment error:", error);

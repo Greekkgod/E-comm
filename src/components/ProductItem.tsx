@@ -90,7 +90,7 @@ const ProductItem: React.FC<{ item: ProductShow }> = ({ item }) => {
   return (
     <div ref={cardRef} className="bg-white rounded-xl shadow-lg p-4">
       <div className="relative w-[250px] h-56 mb-4 rounded-md overflow-hidden">
-        <Image src={item.image} alt={item.name} fill className="object-cover w-full h-full rounded-md" />
+        <Image src={item.image} alt={item.name} fill sizes="250px" className="object-cover w-full h-full rounded-md" />
       </div>
       <h3 className="text-lg font-semibold text-gray-800">{item.name}</h3>
       {item.description && <p className="text-sm text-gray-600 mt-1">{item.description}</p>}

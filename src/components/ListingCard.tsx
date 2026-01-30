@@ -94,7 +94,7 @@ export default function ProductCard({ product, gridView }: ProductCardProps) {
       {gridView ? (
         <div className="relative group border rounded-md overflow-hidden bg-white">
           <div className="relative aspect-square">
-            <Image src={product.image[0] || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+            <Image src={product.image[0] || "/placeholder.svg"} alt={product.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
             <button
               onClick={toggleWishlist}
               className="absolute top-2 right-2 p-1.5 bg-white rounded-full shadow-md z-10"
@@ -118,7 +118,7 @@ export default function ProductCard({ product, gridView }: ProductCardProps) {
         <div className="relative group border rounded-md overflow-hidden bg-white">
           <div className="flex">
             <div className="relative w-40 h-40 flex-shrink-0">
-              <Image src={product.image[0] || "/placeholder.svg"} alt={product.name} fill className="object-cover" />
+              <Image src={product.image[0] || "/placeholder.svg"} alt={product.name} fill sizes="160px" className="object-cover" />
               <button
                 onClick={toggleWishlist}
                 className="absolute top-2 right-2 p-1.5 bg-white rounded-full shadow-md z-10"

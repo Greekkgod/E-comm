@@ -2,14 +2,13 @@
 import axios from "axios";
 import { useState } from "react"
 // import { X } from "lucide-react"
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 import { jwtDecode } from "jwt-decode"
 // import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { ShippingForm } from "./shipping-form"
 import { formatCurrency } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
-import { getCashfreeInstance } from "@/utils/cash"
 import { toast } from "sonner"
 
 type cart = CartResponse["cart"];
@@ -51,25 +50,6 @@ export function CheckoutDrawer({ cart, isOpen, onClose }: CheckoutDrawerProps) {
     }
   }
 
-  const handleRedirect = async (sessionId: string) => { // Made async
-    const cashfree = await getCashfreeInstance(); // Await the instance
-    const checkoutOptions = {
-      paymentSessionId: sessionId,
-      returnUrl: `${window.location.origin}/checkout/success`,
-    }
-
-    cashfree.checkout(checkoutOptions).then((result) => {
-      if (result.error) {
-        toast.error(result.error.message)
-        setError(result.error.message)
-        setIsLoading(false)
-      }
-      if (result.redirect) {
-        console.log("Redirecting to payment gateway")
-      }
-    })
-  }
-
   const handleCheckout = async (address: ShippingAddress) => {
     setIsLoading(true)
     setError("")
@@ -83,7 +63,7 @@ export function CheckoutDrawer({ cart, isOpen, onClose }: CheckoutDrawerProps) {
     }
 
     try {
-      const { data } = await axios.post("/api/payment", {
+      const { data, status } = await axios.post("/api/payment", {
         userId,
         orderId: `order_${Math.random().toString(36).substring(2, 10)}`,
         customer_name: address.name,
@@ -96,18 +76,25 @@ export function CheckoutDrawer({ cart, isOpen, onClose }: CheckoutDrawerProps) {
     
       console.log("------", data);
     
-      if (data.payment_session_id) {
-        handleRedirect(data.payment_session_id);
+      if (status === 500 && data.error === "Cashfree is not configured.") {
+        setError("Cashfree is not configured. Payment cannot be initiated.");
+        toast.error("Cashfree is not configured. Payment cannot be initiated.");
+      } else if (data.payment_session_id) {
+        // This part should ideally not be reached if Cashfree is truly removed,
+        // but keeping it as a fallback or for future integrations
+        toast.success("Payment session initiated!");
+        // handleRedirect(data.payment_session_id); // Re-enable if you re-introduce Cashfree
       } else {
-        throw new Error("Missing payment session ID");
+        throw new Error(data.error || "Payment failed, missing session ID.");
       }
     } catch (error: unknown) {
       console.error("Payment error:", error);
       if (axios.isAxiosError(error)) {
-        setError(error.response?.data?.message || "Payment failed. Try again.");
+        setError(error.response?.data?.error || "Payment failed. Try again.");
       } else {
         setError((error as Error).message || "Payment failed. Try again.");
       }
+    } finally {
       setIsLoading(false);
     }
   }
