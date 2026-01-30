@@ -1,3 +1,8 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String?
@@ -5,6 +10,7 @@ model User {
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  posts     Post[]   // Add this line
 }
 
 model Post {
@@ -16,6 +22,7 @@ model Post {
   author    User     @relation(fields: [authorId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  comments  Comment[] // Add this line
 }
 
 model Comment {
