@@ -21,7 +21,7 @@ const categories = [
   {
     title: "Contanct Us",
     icon: "/images/logos/contact.png",
-    url: "/contact",
+    url: "/Contactus",
   },
   {
     title: "Your Order",
@@ -31,7 +31,7 @@ const categories = [
   {
     title: "Profile",
     icon: "/images/logos/profile.png",
-    url: "/profile",
+    url: "/user",
   },
   
 
@@ -39,7 +39,6 @@ const categories = [
 
 const utilityLinks = [
   // { title: "Track Order", url: "/track-order" },
-  { title: "Customer Support", url: "/support" },
   { title: "Blog", url: "/blog" },
 ]
 

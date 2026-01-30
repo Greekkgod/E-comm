@@ -42,7 +42,7 @@ export const ButtonNavLinks : BottomNavLinks[] = [
       },
     {
       title:"Contact Us",
-      url:"/contact"
+      url:"/Contactus"
     },
     {
         title: 'More',

@@ -91,7 +91,7 @@ function ResetPasswordForm() {
         {/* Logo - Centered and Larger */}
         <div className="flex justify-center mb-4">
           <Image
-            src="/images/logos/Logo.svg"
+            src="/images/logos/logo.svg"
             alt="Logo"
             width={350}
             height={350}
