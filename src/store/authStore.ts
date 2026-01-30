@@ -13,9 +13,8 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   login: async (email, password) => {
     try {
-        try {
-          await axios.post("http://localhost:3000/api/auth/login" ,{email,password})
-          alert("Registered Successfully")
+              try {
+                await axios.post("/api/auth/login" ,{email,password})          alert("Registered Successfully")
         } catch (error) {
           console.log(error)
           alert("error while login")

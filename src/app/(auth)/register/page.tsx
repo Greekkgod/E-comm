@@ -46,7 +46,7 @@ const Signup = () => {
     onSubmit: async (values) => {
       try {
         console.log("Form submitted:", values);
-        await axios.post("http://localhost:3000/api/auth/register", values, {
+        await axios.post("/api/auth/register", values, {
           headers: { "Content-Type": "application/json" },
         });
         alert("Registered Successfully");
