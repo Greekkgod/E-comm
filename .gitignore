@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/rudrakshweb/node_modules
+/upvannweb/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -23,6 +25,7 @@
 # misc
 .DS_Store
 *.pem
+clarification.md
 
 # debug
 npm-debug.log*
